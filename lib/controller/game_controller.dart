@@ -37,7 +37,7 @@ class GameController extends GetxController {
         startTimer();
       }
     });
-    //    _loadGameData();
+     _loadGameData();
   }
 
   // 게임 로직
@@ -62,6 +62,7 @@ class GameController extends GetxController {
     if (roundsPlayed.value >= 5) {
       gameInProgress.value = false;
     }
+    _saveGameData();
    showCooldownDialog();
   }
 
@@ -145,7 +146,7 @@ class GameController extends GetxController {
 
 
   void startTimer() {
-    const Duration roundDuration = Duration(minutes: 5);
+    const Duration roundDuration = Duration(seconds: 5);
     endTime = DateTime.now().add(roundDuration);
 
     void updateRemainingTime() {
